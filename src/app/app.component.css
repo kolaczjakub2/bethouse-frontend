@@ -1,0 +1,16 @@
+.column {
+  float: left;
+  margin:2%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+div{
+  text-align: center;
+}
+

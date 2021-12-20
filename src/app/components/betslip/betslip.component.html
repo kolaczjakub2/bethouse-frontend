@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-title>{{'betslip.name'| translate}}</mat-card-title>
+
+  <div *ngIf="betslipPositions.length>0">
+    <div *ngFor="let betslipPosition of betslipPositions">
+      <app-betslip-position [betslipPosition]="betslipPosition" [deleteMark]="true" [showStatus]="false"></app-betslip-position>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top:5%">
+    <form [formGroup]="betslipForm">
+    <mat-form-field appearance="outline"  style="width: 100%">
+      <mat-label>{{'betslip.stake'|translate}}</mat-label>
+      <input matInput formControlName="stake" (change)="countPossibleWin()">
+    </mat-form-field>
+    <mat-form-field appearance="outline"  style="width: 100%">
+      <mat-label>{{'betslip.possibleWinning'|translate}}</mat-label>
+      <input matInput readonly formControlName="possibleWinning">
+    </mat-form-field>
+    </form>
+  </div>
+
+  <div class="row">
+    <button mat-raised-button color="primary" (click)="placeBet()">
+      {{'betslip.placeBetButton'|translate}}
+    </button>
+  </div>
+</mat-card>

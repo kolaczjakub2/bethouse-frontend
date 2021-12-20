@@ -1,0 +1,17 @@
+<mat-card>
+
+  <ng-container *ngFor="let sport of sports">
+    <button mat-menu-item [matMenuTriggerFor]="countryMenu"
+            (onMenuOpen)="onSportClick(sport)">{{'sidemenu.' + sport | translate}}</button>
+    <mat-menu #countryMenu="matMenu">
+      <button *ngFor="let country of countries" [matMenuTriggerFor]="leagueMenu"
+              (onMenuOpen)="onCountryClick(sport,country)" mat-menu-item>{{ country }}
+
+        <mat-menu #leagueMenu="matMenu">
+          <button *ngFor="let league of leagues" mat-menu-item
+                  (click)="onLeagueSelect(sport,country,league)">{{ league.name }}</button>
+        </mat-menu>
+      </button>
+    </mat-menu>
+  </ng-container>
+</mat-card>

@@ -1,0 +1,8 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{bet.description}}
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <app-odd [odds]="bet.odds" (messageEvent)="onChange($event)"></app-odd>
+</mat-expansion-panel>

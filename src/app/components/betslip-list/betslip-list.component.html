@@ -1,0 +1,40 @@
+<table mat-table
+       [dataSource]="dataSource" multiTemplateDataRows
+       class="mat-elevation-z8 ">
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+    <th mat-header-cell *matHeaderCellDef style="text-align: center"> {{'betslip.' + column | translate}} </th>
+    <td mat-cell *matCellDef="let element">
+      <span *ngIf="column=='dateTime'">{{element[column] | date:"dd-MM-yyyy HH:mm"}}</span>
+      <span *ngIf="column!='dateTime'">{{element[column]}}</span>
+      <span *ngIf="column=='moreInfo'">
+      <mat-icon>details</mat-icon>
+      </span>
+      <span *ngIf="column=='status'">
+        <app-status [status]="element[column]" [show]="true"></app-status>
+      </span>
+    </td>
+  </ng-container>
+
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+      <div class="example-element-detail"
+           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <div class="row center" style="width: 90%;">
+          <div class="column" *ngFor="let betslipPosition of betslipPositions">
+            <app-betslip-position [betslipPosition]="betslipPosition" [deleteMark]="false" [showStatus]="true"></app-betslip-position>
+          </div>
+        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="onClickRow(element)">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>

@@ -1,0 +1,22 @@
+<mat-card style="width: 100%">
+  <mat-card-title style="font-size: small;">{{betslipPosition.homeTeam}}
+    vs {{betslipPosition.awayTeam}}
+    <span style="float: right" (click)="deleteBetSlip(betslipPosition)" *ngIf="deleteMark"><mat-icon>delete</mat-icon></span>
+    <app-status style="float:right; margin-bottom:2%" [status]="betslipPosition.status"
+                [show]="showStatus"></app-status>
+  </mat-card-title>
+  <mat-card-subtitle style="font-size: smaller;">{{betslipPosition.leagueName}}
+    ({{betslipPosition.countryLeague}})
+    <div>
+      {{betslipPosition.dateTime | date:"HH:mm dd-MM-yyyy "}}
+    </div>
+
+  </mat-card-subtitle>
+  <mat-card-actions align="start" style="font-size: small;">
+    <mat-chip-list style="float: right">
+      <mat-chip>{{betslipPosition.odd.rate}}</mat-chip>
+    </mat-chip-list>
+    {{betslipPosition.bet.description}}: {{betslipPosition.odd.description}}
+  </mat-card-actions>
+  <mat-card-actions></mat-card-actions>
+</mat-card>

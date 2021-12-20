@@ -1,0 +1,8 @@
+<div class="row">
+  <div *ngFor="let odd of odds" class="column" [ngStyle]="{'width': 100/(odds.length) +'%'}">
+    {{odd.description}}
+  </div>
+</div>
+<mat-button-toggle-group style="width: 100%" (change)="onChange($event)" [(ngModel)]="selected">
+  <mat-button-toggle *ngFor="let odd of odds" style="width: 100%" [value]="odd">{{odd.rate}}</mat-button-toggle>
+</mat-button-toggle-group>

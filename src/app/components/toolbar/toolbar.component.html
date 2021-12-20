@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="pointer" [routerLink]="''">betHouse</span>
+  <span class="example-spacer"></span>
+  <span class="pointer" [routerLink]="''">{{'toolbar.bets' | translate}}</span>
+  <span class="example-spacer"></span>
+
+
+  <button mat-button [matMenuTriggerFor]="languageMenu">{{'language' | translate}}</button>
+  <mat-menu #languageMenu="matMenu">
+    <button mat-menu-item (click)="changeLanguage('pl')">{{'language.PL' | translate}}</button>
+    <button mat-menu-item (click)="changeLanguage('en')">{{'language.EN' | translate}}</button>
+  </mat-menu>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="'user/bets'">
+      <mat-icon>ballot</mat-icon>
+      <span>{{'user.betslips'|translate}}</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>

@@ -1,0 +1,8 @@
+<mat-card>
+  <mat-card-title>{{match.homeTeam}} vs {{match.awayTeam}}</mat-card-title>
+  <mat-card-subtitle>{{match.leagueName}} ({{match.countryLeague}})
+    {{match.dateTime | date:"HH:mm dd-MM-yyyy "}}</mat-card-subtitle>
+  <mat-card-actions>
+    <app-bet *ngFor="let bet of match.bets" [bet]="bet" (messageEvent)="addToBetslip($event,bet)"></app-bet>
+  </mat-card-actions>
+</mat-card>

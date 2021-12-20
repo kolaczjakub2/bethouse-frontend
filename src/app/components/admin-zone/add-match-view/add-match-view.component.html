@@ -1,0 +1,84 @@
+<mat-card>
+  <form [formGroup]="matchForm" style="width: 100%">
+    <div>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Sport</mat-label>
+        <input type="text"
+               placeholder="Sport"
+               matInput
+               formControlName="sport"
+               [matAutocomplete]="sport">
+        <mat-autocomplete autoActiveFirstOption #sport="matAutocomplete">
+          <mat-option *ngFor="let option of filteredSports | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Country</mat-label>
+        <input type="text"
+               placeholder="Country"
+               matInput
+               formControlName="country"
+               [matAutocomplete]="country">
+        <mat-autocomplete autoActiveFirstOption #country="matAutocomplete">
+          <mat-option *ngFor="let option of filteredCountries | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>League</mat-label>
+        <input type="text"
+               placeholder="League"
+               matInput
+               formControlName="league"
+               [matAutocomplete]="league">
+        <mat-autocomplete autoActiveFirstOption #league="matAutocomplete" [displayWith]="displayLeague">
+          <mat-option *ngFor="let league of filteredLeagues | async" [value]="league">
+            {{league.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Home Team</mat-label>
+        <input type="text"
+               placeholder="Home Team"
+               matInput
+               formControlName="homeTeam"
+               [matAutocomplete]="homeTeam">
+        <mat-autocomplete autoActiveFirstOption #homeTeam="matAutocomplete" [displayWith]="displayTeam">
+          <mat-option *ngFor="let team of filteredHomeTeams | async" [value]="team">
+            {{team.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      vs
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Away Team</mat-label>
+        <input type="text"
+               placeholder="Away Team"
+               matInput
+               formControlName="awayTeam"
+               [matAutocomplete]="homeTeam">
+        <mat-autocomplete autoActiveFirstOption #homeTeam="matAutocomplete" [displayWith]="displayTeam">
+          <mat-option *ngFor="let team of filteredAwayTeams | async" [value]="team">
+            {{team.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+    </div>
+
+
+  </form>
+
+
+</mat-card>
